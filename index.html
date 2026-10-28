@@ -8,8 +8,10 @@
 </head>
 <body>
 
-    <a class="pular-para-conteudo" href="#principal">Pular para o conteúdo</a>
+  <!-- Link escondido para quem navega pelo teclado pular o topo -->
+  <a class="pular-para-conteudo" href="#principal">Pular para o conteúdo</a>
 
+  <!-- ===== BARRA DO TOPO: logo e botões de acessibilidade ===== -->
   <div class="barra-topo">
     <div class="marca"><span class="bolinha" aria-hidden="true"></span>Digital para Todos</div>
     <div class="ferramentas-acessibilidade" role="group" aria-label="Recursos de acessibilidade">
@@ -22,13 +24,13 @@
 
   <main id="principal" class="conteudo">
 
-  </main>
-
-      <section class="hero">
+    <!-- ===== INÍCIO ===== -->
+    <section class="hero">
       <span class="selo">✦ TECNOLOGIA SIMPLES, SEGURA E INCLUSIVA</span>
       <h1>O digital deve<br>ser para <span class="destaque">todos.</span></h1>
       <p class="texto-apoio">Entenda a tecnologia sem medo. Crie experiências que ninguém precise deixar de usar.</p>
       <div class="botoes-hero">
+        <!-- data-ir-para diz para qual seção o botão rola a página -->
         <button class="botao botao-escuro" data-ir-para="tradutor">Quero entender tecnologia →</button>
         <button class="botao" data-ir-para="avaliador">Quero criar com inclusão</button>
       </div>
@@ -39,12 +41,80 @@
       </div>
     </section>
 
+    <!-- ===== ESTATÍSTICAS ===== -->
     <div class="estatisticas">
       <div class="estatistica"><b>29 mi</b>de brasileiros ainda não usam a internet<small>Fonte: TIC Domicílios 2023</small></div>
       <div class="estatistica"><b>24%</b>dos usuários têm dificuldade com serviços digitais<small>Fonte: Cetic.br, 2023</small></div>
       <div class="estatistica"><b>18,6 mi</b>de pessoas têm alguma deficiência no Brasil<small>Fonte: IBGE, 2022</small></div>
     </div>
 
+    <div class="titulo-secao">
+      <span class="rotulo">DUAS FERRAMENTAS, UM PROPÓSITO</span>
+      <h2>Escolha por onde começar</h2>
+      <p>Orientação para quem usa. Boas práticas para quem constrói.</p>
+    </div>
+
+    <!-- ===== TRADUTOR DE TECNIQUÊS ===== -->
+    <section class="painel painel-tradutor" id="tradutor" aria-labelledby="titulo-tradutor">
+      <div class="painel-texto">
+        <span class="rotulo">PARA QUEM USA</span>
+        <h3 id="titulo-tradutor">Tradutor de tecniquês</h3>
+        <p class="texto-apoio" style="margin:0;text-align:left">Respostas curtas, seguras e sem palavras difíceis. Pergunte como se estivesse conversando com alguém de confiança.</p>
+        <ul>
+          <li>Passo a passo simples</li>
+          <li>Alertas contra golpes</li>
+          <li>Resposta em voz alta</li>
+        </ul>
+      </div>
+
+      <div class="caixa">
+        <div class="caixa-topo"><b>Assistente digital</b><span>LINGUAGEM SIMPLES</span></div>
+        <p style="margin:0 0 .5rem;font-size:.9em">Olá! O que você quer entender hoje?</p>
+
+        <!-- o JavaScript cria aqui os botões de perguntas prontas -->
+        <div class="perguntas-rapidas" id="perguntas-rapidas"></div>
+
+        <!-- o JavaScript coloca aqui as mensagens da conversa -->
+        <div id="conversa" role="log" aria-live="polite" aria-label="Respostas"></div>
+
+        <div class="aviso"><b>Importante:</b> nunca compartilhe senhas ou códigos de segurança.</div>
+        <button class="botao-ouvir" id="btn-ouvir">🔊 Ouvir resposta</button>
+
+        <form class="linha" id="form-pergunta">
+          <label for="campo-pergunta" style="position:absolute;left:-999px">Sua pergunta</label>
+          <input type="text" id="campo-pergunta" placeholder="Ou escreva aqui. Ex.: como faço um Pix?" autocomplete="off">
+          <button class="botao botao-escuro" type="submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== AVALIADOR DE ACESSIBILIDADE ===== -->
+    <section class="painel painel-avaliador" id="avaliador" aria-labelledby="titulo-avaliador">
+      <div class="caixa">
+        <div class="caixa-topo"><b>Analisar página</b><span>BASEADO NA WCAG 2.2</span></div>
+        <label class="rotulo-campo" for="campo-html">Cole um trecho do código HTML</label>
+        <textarea id="campo-html" placeholder="<button class=&quot;botao&quot;>&#10;  Finalizar compra&#10;</button>"></textarea>
+        <div class="linha"><button class="botao botao-roxo" id="btn-analisar">✦ Avaliar acessibilidade</button></div>
+        <div class="linha"><button class="botao" id="btn-exemplo" style="width:100%">Usar exemplo com erros</button></div>
+
+        <!-- o JavaScript escreve aqui a nota e os problemas -->
+        <div id="resultado" aria-live="polite" style="margin-top:.8rem"></div>
+        <p class="observacao">🔒 Seu código não é armazenado.</p>
+      </div>
+
+      <div class="painel-texto">
+        <span class="rotulo">PARA QUEM CRIA</span>
+        <h3 id="titulo-avaliador">Avaliador de acessibilidade</h3>
+        <p class="texto-apoio" style="margin:0;text-align:left">Descubra barreiras no seu projeto e receba correções claras, priorizadas pelo impacto nas pessoas.</p>
+        <ul>
+          <li>Diagnóstico em linguagem clara</li>
+          <li>Nota geral de acessibilidade</li>
+          <li>Sugestões baseadas na WCAG</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== IMPACTO SOCIAL ===== -->
     <section class="secao-impacto" id="impacto" aria-labelledby="titulo-impacto">
       <div>
         <span class="rotulo">IMPACTO SOCIAL</span>
@@ -57,15 +127,48 @@
       </div>
     </section>
 
+    <!-- ===== SOBRE O PROJETO ===== -->
+    <section class="sobre" id="sobre" aria-labelledby="titulo-sobre">
+      <span class="rotulo">SOBRE O PROJETO</span>
+      <h2 id="titulo-sobre">Quem fez e por quê</h2>
+      <p class="texto-apoio" style="margin:.8rem 0 1.4rem;text-align:left">Projeto da disciplina [NOME DA DISCIPLINA], do curso de Análise e Desenvolvimento de Sistemas, sobre <b>impacto social da tecnologia</b> e <b>inclusão digital e acessibilidade</b>.</p>
+      <div class="tres-colunas">
+        <div class="caixa"><b>Equipe</b>
+          <ul class="lista-sobre">
+            <li>[Nome do integrante 1]</li>
+            <li>[Nome do integrante 2]</li>
+            <li>[Nome do integrante 3]</li>
+            <li>[Nome do integrante 4]</li>
+          </ul>
+        </div>
+        <div class="caixa"><b>Tecnologias</b>
+          <ul class="lista-sobre">
+            <li>HTML, CSS e JavaScript</li>
+            <li>DOMParser (análise do código)</li>
+            <li>Web Speech API (voz)</li>
+          </ul>
+        </div>
+        <div class="caixa"><b>Fontes</b>
+          <ul class="lista-sobre">
+            <li>TIC Domicílios 2023 (Cetic.br)</li>
+            <li>IBGE 2022</li>
+            <li>WCAG 2.2 (W3C)</li>
+            <li>Lei 13.146/2015 e Lei 13.709/2018</li>
+          </ul>
+        </div>
+      </div>
+      <p class="observacao" style="text-align:left">Limitação: o tradutor usa respostas pré-escritas e o avaliador checa apenas regras básicas da WCAG. Próximo passo: integrar uma IA e ampliar as regras.</p>
+    </section>
+
   </main>
 
   <footer>
     <div class="marca" style="justify-content:center"><span class="bolinha" aria-hidden="true"></span>Digital para Todos</div>
     <p>Um projeto para aproximar pessoas e tecnologia.</p>
-    <small>Feito com linguagem simples, contraste adequado e navegação por teclado.</small>
+    <small><a href="#sobre" style="color:inherit">Sobre o projeto</a><br>Feito com linguagem simples, contraste adequado e navegação por teclado.</small>
   </footer>
 
-
+  <!-- O JavaScript fica por último para a página já existir quando ele rodar -->
   <script src="script.js"></script>
 </body>
 </html>
