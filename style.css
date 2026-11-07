@@ -138,3 +138,129 @@ h1 {
   margin: 0 auto;
   padding: 0 1rem;
 }
+
+.barra-topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.marca {
+  font-weight: 800;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.bolinha {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--cor-texto);
+  display: grid;
+  place-items: center;
+}
+
+.bolinha::after {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--cor-destaque);
+}
+
+.ferramentas-acessibilidade {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.ferramentas-acessibilidade button {
+  border: 1.5px solid var(--cor-borda);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  min-height: 40px;
+}
+
+.ferramentas-acessibilidade button[aria-pressed="true"] {
+  background: var(--cor-texto);
+  color: var(--cor-fundo);
+}
+
+.hero {
+  text-align: center;
+  padding: 3.5rem 0 2rem;
+}
+
+.selo {
+  display: inline-block;
+  background: var(--cor-selo);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+}
+
+.destaque {
+  background: linear-gradient(
+    transparent 70%,
+    var(--cor-destaque) 70%,
+    var(--cor-destaque) 92%,
+    transparent 92%
+  );
+}
+
+.texto-apoio {
+  color: var(--cor-texto-suave);
+  max-width: 34rem;
+  margin: 0 auto 1.6rem;
+  font-size: 1.15em;
+}
+
+.botoes-hero {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.selos-confianca {
+  display: flex;
+  gap: 1.4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: var(--cor-texto-suave);
+  font-size: 0.85em;
+  margin-top: 2rem;
+}
+
+.estatisticas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.5rem;
+  border-top: 1px solid var(--cor-borda);
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 2rem 0;
+  margin: 2rem 0;
+}
+
+.estatistica b {
+  font-size: 2.4rem;
+  letter-spacing: -0.03em;
+  display: block;
+}
+
+.estatistica small {
+  color: var(--cor-texto-suave);
+  display: block;
+  margin-top: 0.4rem;
+}
