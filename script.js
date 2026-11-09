@@ -29,6 +29,7 @@ for (const botao of botoesDeRolagem) {
 let tamanhoDaFonte = 17;
 
 function mudarFonte(novoTamanho) {
+
   if (novoTamanho < 13) {
     novoTamanho = 13;
   }
@@ -37,6 +38,7 @@ function mudarFonte(novoTamanho) {
   }
 
   tamanhoDaFonte = novoTamanho;
+
   document.documentElement.style.setProperty("--tamanho-fonte", tamanhoDaFonte + "px");
 }
 
