@@ -395,4 +395,4 @@ botaoAnalisar.onclick = function () {
   }
 
   falar("Nota " + nota + " de 100. " + textoResumo.textContent, false);
-};
+}; 
