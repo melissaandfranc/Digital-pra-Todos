@@ -7,11 +7,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="filtro-protanopia"><feColorMatrix type="matrix" values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"/></filter>
+    <filter id="filtro-deuteranopia"><feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"/></filter>
+  </svg>
 
- 
   <a class="pular-para-conteudo" href="#principal">Pular para o conteúdo</a>
 
-  
   <div class="barra-topo">
     <div class="marca"><span class="bolinha" aria-hidden="true"></span>Digital para Todos</div>
     <div class="ferramentas-acessibilidade" role="group" aria-label="Recursos de acessibilidade">
@@ -19,18 +21,23 @@
       <button id="btn-fonte-mais" aria-label="Aumentar letra">A+</button>
       <button id="btn-contraste" aria-pressed="false">Alto contraste</button>
       <button id="btn-voz" aria-pressed="false">Ler respostas</button>
+      <select id="simulacao" aria-label="Simular dificuldade visual">
+        <option value="normal">Simular: visão normal</option>
+        <option value="protanopia">Daltonismo (protanopia)</option>
+        <option value="deuteranopia">Daltonismo (deuteranopia)</option>
+        <option value="baixavisao">Baixa visão</option>
+        <option value="cinza">Sem cores</option>
+      </select>
     </div>
   </div>
 
   <main id="principal" class="conteudo">
 
-    
     <section class="hero">
       <span class="selo">✦ TECNOLOGIA SIMPLES, SEGURA E INCLUSIVA</span>
       <h1>O digital deve<br>ser para <span class="destaque">todos.</span></h1>
       <p class="texto-apoio">Entenda a tecnologia sem medo. Crie experiências que ninguém precise deixar de usar.</p>
       <div class="botoes-hero">
-        <!-- data-ir-para diz para qual seção o botão rola a página -->
         <button class="botao botao-escuro" data-ir-para="tradutor">Quero entender tecnologia →</button>
         <button class="botao" data-ir-para="avaliador">Quero criar com inclusão</button>
       </div>
@@ -39,12 +46,8 @@
         <span>Acessível por princípio</span>
         <span>Seus dados protegidos</span>
       </div>
-    </section>S
-
-
     </section>
 
-    
     <div class="estatisticas">
       <div class="estatistica"><b>29 mi</b>de brasileiros ainda não usam a internet<small>Fonte: TIC Domicílios 2023</small></div>
       <div class="estatistica"><b>24%</b>dos usuários têm dificuldade com serviços digitais<small>Fonte: Cetic.br, 2023</small></div>
@@ -52,12 +55,11 @@
     </div>
 
     <div class="titulo-secao">
-      <span class="rotulo">DUAS FERRAMENTAS, UM PROPÓSITO</span>
+      <span class="rotulo">QUATRO FERRAMENTAS, UM PROPÓSITO</span>
       <h2>Escolha por onde começar</h2>
       <p>Orientação para quem usa. Boas práticas para quem constrói.</p>
     </div>
 
-   
     <section class="painel painel-tradutor" id="tradutor" aria-labelledby="titulo-tradutor">
       <div class="painel-texto">
         <span class="rotulo">PARA QUEM USA</span>
@@ -74,10 +76,8 @@
         <div class="caixa-topo"><b>Assistente digital</b><span>LINGUAGEM SIMPLES</span></div>
         <p style="margin:0 0 .5rem;font-size:.9em">Olá! O que você quer entender hoje?</p>
 
-       
         <div class="perguntas-rapidas" id="perguntas-rapidas"></div>
 
-        
         <div id="conversa" role="log" aria-live="polite" aria-label="Respostas"></div>
 
         <div class="aviso"><b>Importante:</b> nunca compartilhe senhas ou códigos de segurança.</div>
@@ -91,7 +91,6 @@
       </div>
     </section>
 
-    
     <section class="painel painel-avaliador" id="avaliador" aria-labelledby="titulo-avaliador">
       <div class="caixa">
         <div class="caixa-topo"><b>Analisar página</b><span>BASEADO NA WCAG 2.2</span></div>
@@ -100,7 +99,6 @@
         <div class="linha"><button class="botao botao-roxo" id="btn-analisar">✦ Avaliar acessibilidade</button></div>
         <div class="linha"><button class="botao" id="btn-exemplo" style="width:100%">Usar exemplo com erros</button></div>
 
-        <!-- o JavaScript escreve aqui a nota e os problemas -->
         <div id="resultado" aria-live="polite" style="margin-top:.8rem"></div>
         <p class="observacao">🔒 Seu código não é armazenado.</p>
       </div>
@@ -117,7 +115,50 @@
       </div>
     </section>
 
-   
+    <section class="painel painel-tradutor" id="detector" aria-labelledby="titulo-detector">
+      <div class="painel-texto">
+        <span class="rotulo">PARA QUEM USA</span>
+        <h3 id="titulo-detector">Detector de golpes</h3>
+        <p class="texto-apoio" style="margin:0;text-align:left">Recebeu uma mensagem estranha? Cole aqui e veja quais sinais de golpe ela tem, explicados um a um.</p>
+        <ul>
+          <li>Nível de risco: baixo, médio ou alto</li>
+          <li>Cada sinal explicado em linguagem simples</li>
+          <li>O que fazer em seguida</li>
+        </ul>
+      </div>
+      <div class="caixa">
+        <div class="caixa-topo"><b>Analisar mensagem</b><span>SINAIS DE GOLPE</span></div>
+        <label class="rotulo-campo" for="campo-mensagem">Cole a mensagem que você recebeu</label>
+        <textarea class="campo-mensagem" id="campo-mensagem" placeholder="Ex.: URGENTE! Sua conta será bloqueada hoje..."></textarea>
+        <div class="linha"><button class="botao botao-roxo" id="btn-detectar">🔍 Analisar mensagem</button></div>
+        <div class="linha"><button class="botao" id="btn-exemplo-golpe" style="width:100%">Usar mensagem de exemplo</button></div>
+        <div id="resultado-golpe" aria-live="polite" style="margin-top:.8rem"></div>
+        <p class="observacao">Não substitui o seu bom senso. Na dúvida, ligue para o banco pelo número do cartão.</p>
+      </div>
+    </section>
+
+    <section class="painel painel-avaliador" id="contraste" aria-labelledby="titulo-contraste">
+      <div class="caixa">
+        <div class="caixa-topo"><b>Verificador de contraste</b><span>WCAG 2.2</span></div>
+        <div class="cores">
+          <div><label class="rotulo-campo" for="cor-texto-escolhida">Cor do texto</label><input type="color" id="cor-texto-escolhida" value="#999999"></div>
+          <div><label class="rotulo-campo" for="cor-fundo-escolhida">Cor do fundo</label><input type="color" id="cor-fundo-escolhida" value="#ffffff"></div>
+        </div>
+        <div class="previa" id="previa">Texto de exemplo: Digital para Todos</div>
+        <div id="resultado-contraste" aria-live="polite"></div>
+      </div>
+      <div class="painel-texto">
+        <span class="rotulo">PARA QUEM CRIA</span>
+        <h3 id="titulo-contraste">Verificador de contraste</h3>
+        <p class="texto-apoio" style="margin:0;text-align:left">Cinza claro sobre branco é bonito, mas muita gente não consegue ler. Escolha as cores e veja se passam nos critérios da WCAG.</p>
+        <ul>
+          <li>Taxa de contraste exata</li>
+          <li>Aprovado ou reprovado em AA e AAA</li>
+          <li>Prévia ao vivo</li>
+        </ul>
+      </div>
+    </section>
+
     <section class="secao-impacto" id="impacto" aria-labelledby="titulo-impacto">
       <div>
         <span class="rotulo">IMPACTO SOCIAL</span>
@@ -130,24 +171,21 @@
       </div>
     </section>
 
-  
     <section class="sobre" id="sobre" aria-labelledby="titulo-sobre">
       <span class="rotulo">SOBRE O PROJETO</span>
       <h2 id="titulo-sobre">Quem fez e por quê</h2>
-      <p class="texto-apoio" style="margin:.8rem 0 1.4rem;text-align:left">Projeto da disciplina Desing Profissional, do curso de Análise e Desenvolvimento de Sistemas, sobre <b>impacto social da tecnologia</b> e <b>inclusão digital e acessibilidade</b>.</p>
+      <p class="texto-apoio" style="margin:.8rem 0 1.4rem;text-align:left">Projeto da disciplina [NOME DA DISCIPLINA], do curso de Análise e Desenvolvimento de Sistemas, sobre <b>impacto social da tecnologia</b> e <b>inclusão digital e acessibilidade</b>.</p>
       <div class="tres-colunas">
         <div class="caixa"><b>Equipe</b>
           <ul class="lista-sobre">
-            <li>[Melissa Andrade de França]</li>
-            <li>[Guilherme Henrique Oliveira dos Santos]</li>
-            <li>[Kauany Couto da Silva]</li>
-            <li>[Leonardo de Matos Nery]</li>
-            <li>[Gustavo Alves da Silva]</li>
-            <li>[Kauan Marques de Almeida]</li>
-            <li>[Daniel Eloy]</li>
-            <li>[Adriano Correia de Oliveira Junior]</li>
-
-
+            <li>Melissa Andrade de França</li>
+            <li>Guilherme Henrique Oliveira dos Santos</li>
+            <li>Kauany Couto da Silva</li>
+            <li>Leonardo de Matos Nery</li>
+            <li>Gustavo Alves da Silva</li>
+            <li>Kauan Marques de Almeida</li>
+            <li>Daniel Eloy</li>
+            <li>Adriano Correia de Oliveira Junior</li>
           </ul>
         </div>
         <div class="caixa"><b>Tecnologias</b>
@@ -155,6 +193,7 @@
             <li>HTML, CSS e JavaScript</li>
             <li>DOMParser (análise do código)</li>
             <li>Web Speech API (voz)</li>
+            <li>localStorage (salva preferências)</li>
           </ul>
         </div>
         <div class="caixa"><b>Fontes</b>
@@ -177,7 +216,6 @@
     <small><a href="#sobre" style="color:inherit">Sobre o projeto</a><br>Feito com linguagem simples, contraste adequado e navegação por teclado.</small>
   </footer>
 
-  
   <script src="script.js"></script>
 </body>
 </html>
